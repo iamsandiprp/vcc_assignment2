@@ -1,0 +1,22 @@
+#! /bin/bash
+# Install Apache
+apt-get update
+apt-get install -y apache2
+
+# Start service
+systemctl start apache2
+systemctl enable apache2
+
+# Get the hostname of current VM
+VM_HOSTNAME=$(hostname)
+
+# Create a simple page
+cat <<EOF > /var/www/html/index.html
+<html>
+<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
+    <h1 style="color: blue;">HTTP Traffic Confirmed!</h1>
+    <p>This page is served by VM: <strong>$VM_HOSTNAME</strong></p>
+    <p style="color: green;">Firewall Rule "allow-http" is working properly!</p>
+</body>
+</html>
+EOF
