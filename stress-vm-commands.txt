@@ -1,0 +1,4 @@
+sudo apt-get update && sudo apt-get install stress -y
+
+
+stress --cpu 4 --timeout 120
